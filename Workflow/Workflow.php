@@ -105,7 +105,7 @@ class Workflow
     public function process()
     {
         if ($this->dispatcher !== null) {
-            $this->dispatcher->dispatch(WorkflowEvent::WORKFLOW_START, new GenericEvent($this->context));
+            $this->dispatcher->dispatch(new GenericEvent($this->context), WorkflowEvent::WORKFLOW_START);
         }
 
         while (null !== $extracted = $this->extractor->extract($this->context)) {
@@ -113,7 +113,7 @@ class Workflow
             $this->loader->load($transformed, $this->context);
 
             if ($this->dispatcher !== null) {
-                $this->dispatcher->dispatch(WorkflowEvent::WORKFLOW_ADVANCE, new GenericEvent($this->context));
+                $this->dispatcher->dispatch(new GenericEvent($this->context), WorkflowEvent::WORKFLOW_ADVANCE);
             }
         }
 
@@ -121,7 +121,7 @@ class Workflow
         $this->extractor->purge($this->context);
 
         if ($this->dispatcher !== null) {
-            $this->dispatcher->dispatch(WorkflowEvent::WORKFLOW_FINISH, new GenericEvent($this->context));
+            $this->dispatcher->dispatch(new GenericEvent($this->context), WorkflowEvent::WORKFLOW_FINISH);
         }
     }
 }

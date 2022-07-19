@@ -2,10 +2,10 @@
 
 namespace Bookeen\ETLWorkflow\Event;
 
-use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\ProgressBar;
+use Symfony\Contracts\EventDispatcher\Event;
 
 class WorkflowProgressBarSubscriber implements EventSubscriberInterface
 {
