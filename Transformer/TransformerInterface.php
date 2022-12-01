@@ -9,7 +9,6 @@ interface TransformerInterface
     /**
      * @param $data
      * @param ContextInterface $context
-     * @return mixed
      */
     function transform($data, ContextInterface $context);
 }
