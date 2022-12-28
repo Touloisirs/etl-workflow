@@ -26,17 +26,17 @@ class WorkflowProgressBarSubscriber implements EventSubscriberInterface
         );
     }
 
-    public function onStart(Event $event)
+    public function onStart(Event $event): void
     {
         $this->progressBar->start();
     }
 
-    public function onAdvance(Event $event)
+    public function onAdvance(Event $event): void
     {
         $this->progressBar->advance();
     }
 
-    public function onFinish(Event $event)
+    public function onFinish(Event $event): void
     {
         $this->progressBar->finish();
     }
