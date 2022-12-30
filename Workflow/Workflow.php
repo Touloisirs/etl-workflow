@@ -12,15 +12,15 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 
 class Workflow
 {
-    private ?ExtractorAbstract $extractor;
+    private ?ExtractorAbstract $extractor = null;
 
-    private ?TransformerInterface $transformer;
+    private ?TransformerInterface $transformer = null;
 
-    private ?LoaderInterface $loader;
+    private ?LoaderInterface $loader = null;
 
-    private ?ContextInterface $context;
+    private ?ContextInterface $context = null;
 
-    private ?EventDispatcherInterface $dispatcher;
+    private ?EventDispatcherInterface $dispatcher = null;
 
     public function setDispatcher(EventDispatcherInterface $dispatcher)
     {
