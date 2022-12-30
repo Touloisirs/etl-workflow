@@ -9,7 +9,7 @@ use Symfony\Contracts\EventDispatcher\Event;
 
 class WorkflowProgressBarSubscriber implements EventSubscriberInterface
 {
-    private $progressBar;
+    private ProgressBar $progressBar;
 
     public function __construct(OutputInterface &$output, $count = 0)
     {
