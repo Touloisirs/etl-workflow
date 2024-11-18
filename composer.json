@@ -20,5 +20,9 @@
     "autoload": {
         "psr-0": { "Touloisirs\\ETLWorkflow\\": "" }
     },
-    "target-dir": "Touloisirs/ETLWorkflow"
+    "target-dir": "Touloisirs/ETLWorkflow",
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.64",
+        "rector/rector": "^1.2"
+    }
 }
