@@ -1,15 +1,14 @@
 <?php
 
-namespace Bookeen\ETLWorkflow\Loader;
+namespace Touloisirs\ETLWorkflow\Loader;
 
-use Bookeen\ETLWorkflow\Context\ContextInterface;
+use Touloisirs\ETLWorkflow\Context\ContextInterface;
 
 interface LoaderInterface
 {
-    function load(mixed $data, ContextInterface $context): void;
+    public function load(mixed $data, ContextInterface $context): void;
 
-    function flush(ContextInterface $context): void;
+    public function flush(ContextInterface $context): void;
 
-    function clear(ContextInterface $context): void;
+    public function clear(ContextInterface $context): void;
 }
-

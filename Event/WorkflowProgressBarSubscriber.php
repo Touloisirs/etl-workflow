@@ -1,6 +1,6 @@
 <?php
 
-namespace Bookeen\ETLWorkflow\Event;
+namespace Touloisirs\ETLWorkflow\Event;
 
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -11,7 +11,7 @@ class WorkflowProgressBarSubscriber implements EventSubscriberInterface
 {
     private ProgressBar $progressBar;
 
-    public function __construct(OutputInterface &$output, $count = 0)
+    public function __construct(OutputInterface &$output, int $count = 0)
     {
         $this->progressBar = new ProgressBar($output, $count);
         $this->progressBar->setFormat('debug');
