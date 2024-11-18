@@ -8,17 +8,9 @@ abstract class ExtractorAbstract
 {
     protected $purge = false;
 
-    /**
-     * @param ContextInterface $context
-     * @return mixed
-     */
-    abstract public function extract(ContextInterface $context);
+    abstract public function extract(ContextInterface $context): mixed;
 
-    /**
-     * @param ContextInterface $context
-     * @return boolean
-     */
-    public function purge(ContextInterface $context)
+    public function purge(ContextInterface $context): bool
     {
         if ($this->purge) {
             return $this->doPurge($context);
@@ -27,11 +19,7 @@ abstract class ExtractorAbstract
         return true;
     }
 
-    /**
-     * @param ContextInterface $context
-     * @return boolean
-     */
-    protected function doPurge(ContextInterface $context)
+    protected function doPurge(ContextInterface $context): bool
     {
         return true;
     }

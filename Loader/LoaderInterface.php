@@ -6,23 +6,10 @@ use Bookeen\ETLWorkflow\Context\ContextInterface;
 
 interface LoaderInterface
 {
-    /**
-     * @param $data
-     * @param ContextInterface $context
-     * @return mixed
-     */
-    function load($data, ContextInterface $context);
+    function load(mixed $data, ContextInterface $context): void;
 
-    /**
-     * @param ContextInterface $context
-     * @return mixed
-     */
-    function flush(ContextInterface $context);
+    function flush(ContextInterface $context): void;
 
-    /**
-     * @param ContextInterface $context
-     * @return mixed
-     */
-    function clear(ContextInterface $context);
+    function clear(ContextInterface $context): void;
 }
 
