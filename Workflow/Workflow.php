@@ -7,13 +7,13 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Touloisirs\ETLWorkflow\Context\ContextInterface;
 use Touloisirs\ETLWorkflow\Event\WorkflowEvent;
-use Touloisirs\ETLWorkflow\Extractor\ExtractorAbstract;
+use Touloisirs\ETLWorkflow\Extractor\AbstractExtractor;
 use Touloisirs\ETLWorkflow\Loader\LoaderInterface;
 use Touloisirs\ETLWorkflow\Transformer\TransformerInterface;
 
 class Workflow
 {
-    private ?ExtractorAbstract $extractor = null;
+    private ?AbstractExtractor $extractor = null;
 
     private ?TransformerInterface $transformer = null;
 
@@ -38,12 +38,12 @@ class Workflow
         $this->context = $context;
     }
 
-    public function getExtractor(): ?ExtractorAbstract
+    public function getExtractor(): ?AbstractExtractor
     {
         return $this->extractor;
     }
 
-    public function setExtractor(ExtractorAbstract $extractor): void
+    public function setExtractor(AbstractExtractor $extractor): void
     {
         $this->extractor = $extractor;
     }
