@@ -13,12 +13,12 @@
         "MIT"
     ],
     "require" : {
-        "php": ">=7.2",
-        "symfony/console": "^6.0",
-        "symfony/event-dispatcher": "^6.0"
+        "php": ">=8.2",
+        "symfony/console": "^7.1",
+        "symfony/event-dispatcher": "^7.1"
     },
     "autoload": {
-        "psr-0": { "Bookeen\\ETLWorkflow\\": "" }
+        "psr-0": { "Touloisirs\\ETLWorkflow\\": "" }
     },
-    "target-dir": "Bookeen/ETLWorkflow"
+    "target-dir": "Touloisirs/ETLWorkflow"
 }

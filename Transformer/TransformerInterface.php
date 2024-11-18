@@ -1,10 +1,10 @@
 <?php
 
-namespace Bookeen\ETLWorkflow\Transformer;
+namespace Touloisirs\ETLWorkflow\Transformer;
 
-use Bookeen\ETLWorkflow\Context\ContextInterface;
+use Touloisirs\ETLWorkflow\Context\ContextInterface;
 
 interface TransformerInterface
 {
-    function transform(mixed $data, ContextInterface $context): mixed;
+    public function transform(mixed $data, ContextInterface $context): mixed;
 }

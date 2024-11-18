@@ -1,12 +1,12 @@
 <?php
 
-namespace Bookeen\ETLWorkflow\Extractor;
+namespace Touloisirs\ETLWorkflow\Extractor;
 
-use Bookeen\ETLWorkflow\Context\ContextInterface;
+use Touloisirs\ETLWorkflow\Context\ContextInterface;
 
 abstract class ExtractorAbstract
 {
-    protected $purge = false;
+    protected bool $purge = false;
 
     abstract public function extract(ContextInterface $context): mixed;
 
