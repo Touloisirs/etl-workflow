@@ -1,4 +1,4 @@
-bookeen-etl-workflow
+touloisirs-etl-workflow
 ================
 
 This bundle provide a simple Extract-Transform-Load Workflow with ETL interfaces.
@@ -6,7 +6,7 @@ This bundle provide a simple Extract-Transform-Load Workflow with ETL interfaces
 Install
 -------
 ``` shell
-composer require "bookeen/etl-workflow:1.2.1"
+composer require "touloisirs/etl-workflow:1.2.1"
 ```
 
 In your Smfony CLI
