@@ -4,7 +4,7 @@ namespace Touloisirs\ETLWorkflow\Extractor;
 
 use Touloisirs\ETLWorkflow\Context\ContextInterface;
 
-abstract class ExtractorAbstract
+abstract class AbstractExtractor
 {
     protected bool $purge = false;
 
