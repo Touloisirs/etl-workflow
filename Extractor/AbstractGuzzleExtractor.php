@@ -16,15 +16,18 @@ abstract class AbstractGuzzleExtractor extends AbstractExtractor
      */
     abstract protected function prepareData(string $data): array;
 
-    public function extract(ContextInterface $context): mixed
+    public function prepare(array $params = []): void
     {
         $apiData = $this->guzzle->request('GET', $this->apiUrl)->getBody()->getContents();
-        $preparedData = $this->prepareData($apiData);
+        $this->data = $this->prepareData($apiData);
+    }
 
-        if (empty($preparedData)) {
+    public function extract(ContextInterface $context): mixed
+    {
+        if (empty($this->data)) {
             return null;
         }
 
-        return array_shift($preparedData);
+        return array_shift($this->data);
     }
 }
