@@ -12,7 +12,7 @@ abstract class AbstractGuzzleExtractor extends AbstractExtractor
     }
 
     /**
-     * @return array<string>
+     * @return array<mixed>
      */
     abstract protected function prepareData(string $data): array;
 
