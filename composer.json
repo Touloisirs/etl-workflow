@@ -1,5 +1,5 @@
 {
-    "name" : "enrj/etl-workflow",
+    "name" : "touloisirs/etl-workflow",
     "description" : "Extract-Transform-Load workflow library",
     "type" : "library",
     "authors" : [{
