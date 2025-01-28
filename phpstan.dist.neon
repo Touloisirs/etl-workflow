@@ -1,6 +1,10 @@
 includes:
-    - /tools/.composer/vendor-bin/phpstan/vendor/phpstan/phpstan-symfony/extension.neon
-    - /tools/.composer/vendor-bin/phpstan/vendor/phpstan/phpstan-symfony/rules.neon
+    - vendor/phpstan/phpstan-symfony/extension.neon
+    - vendor/phpstan/phpstan-symfony/rules.neon
 
 parameters:
-    level: max
+    level: 10
+    paths:
+        - ./
+    excludePaths:
+        - ./vendor

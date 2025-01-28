@@ -7,10 +7,4 @@ services:
         volumes:
             - ./:/var/www/
             - ./config/docker/etl-workflow.conf:/usr/local/etc/php-fpm.d/etl-workflow.conf
-        networks:
-            - traefik
         working_dir: /var/www
-networks:
-    traefik:
-      name: traefik
-      external: true

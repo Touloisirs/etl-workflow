@@ -1,6 +1,10 @@
 touloisirs-etl-workflow
 ================
 
+== TO UPDATE ==
+
+== OLD VERSION ==
+
 This bundle provide a simple Extract-Transform-Load Workflow with ETL interfaces.
 
 Install

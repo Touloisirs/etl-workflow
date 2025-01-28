@@ -33,9 +33,10 @@ repos:
     hooks:
     -   id: phpstan
         name: Check php with phpstan
-        entry: jakzal/phpqa:php8.3-debian phpstan analyse --no-progress --no-interaction --autoload-file=vendor/autoload.php
-        language: docker_image
+        entry: docker exec etl-workflow ./vendor/bin/phpstan analyse --memory-limit=1G
+        language: system
         types: [php]
+        pass_filenames: false
 -   repo: local
     hooks:
     -   id: rector
@@ -50,8 +51,3 @@ repos:
         entry: jakzal/phpqa:php8.3-debian bash -c 'if [[ ! $# -eq 0 ]] ; then array="${@}"; phpmd --cache --cache-file=/tmp/.phpmd.result-cache.php ${array// /,} text phpmd-rules.xml; fi'
         language: docker_image
         types: [php]
--   repo: https://github.com/standard/standard
-    rev: v17.1.2
-    hooks:
-    -   id: standard
-        name: check js standard on all projects
