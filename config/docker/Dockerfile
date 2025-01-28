@@ -1,1 +1,1 @@
-FROM front:7.2
+FROM php:8.4-fpm

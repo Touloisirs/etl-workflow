@@ -1,28 +1,16 @@
-version: '3.5'
-
 services:
     php:
-        container_name: php_etl_workflow
-        build:
-          context: ./config/docker
+        container_name: etl-workflow
+        build: ./config/docker
         ports:
           - 9040:9040
         volumes:
-            - .:/var/www/etl-workflow
+            - ./:/var/www/
             - ./config/docker/etl-workflow.conf:/usr/local/etc/php-fpm.d/etl-workflow.conf
-            - ./config/docker/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
-            - /var/run/php7-fpm/:/var/run/php7-fpm/
         networks:
-            - etl_workflow
-            - common
-        extra_hosts:
-            - "nrj-prd-srv-pkg:10.16.7.2"
-        working_dir: /var/www/etl-workflow
-        tty: true
+            - traefik
+        working_dir: /var/www
 networks:
-    etl_workflow:
-      external:
-        name: etl_workflow
-    common:
-        external:
-          name : common
+    traefik:
+      name: traefik
+      external: true
