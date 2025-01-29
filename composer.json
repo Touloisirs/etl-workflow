@@ -2,20 +2,13 @@
     "name" : "touloisirs/etl-workflow",
     "description" : "Extract-Transform-Load workflow library",
     "type" : "library",
-    "authors" : [{
-        "name" : "Bang DAI",
-        "email" : "bang.dai2@gmail.com"
-    }],
     "keywords" : [
         "Extract-Transform-Load ETL workflow symfony"
     ],
-    "license" : [
-        "MIT"
-    ],
     "require" : {
-        "php": ">=8.2",
-        "symfony/console": "^7.1",
-        "symfony/event-dispatcher": "^7.1",
+        "php": ">=8.4",
+        "symfony/console": "^7.2",
+        "symfony/event-dispatcher": "^7.2",
         "guzzlehttp/guzzle": "^7.9"
     },
     "autoload": {
@@ -23,7 +16,8 @@
     },
     "target-dir": "Touloisirs/ETLWorkflow",
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.64",
-        "rector/rector": "^1.2"
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-symfony": "^2.0",
+        "rector/rector": "^2.0"
     }
 }
