@@ -1,6 +1,0 @@
-services:
-
-    guzzle:
-        class: GuzzleHttp\Client
-
-    GuzzleHttp\ClientInterface : '@guzzle'
