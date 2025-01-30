@@ -13,9 +13,5 @@ class TouloisirsETLWorkflowBundle extends AbstractBundle
     /** @param array<mixed> $config */
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
-        // $container->services()
-        //     ->set(HttpClient::class)
-        //     ->alias(HttpClientInterface::class, HttpClient::class)
-        // ;
     }
 }

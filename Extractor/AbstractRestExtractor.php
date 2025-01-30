@@ -5,7 +5,7 @@ namespace Touloisirs\ETLWorkflow\Extractor;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Touloisirs\ETLWorkflow\Context\ContextInterface;
 
-abstract class AbstractGuzzleExtractor extends AbstractExtractor
+abstract class AbstractRestExtractor extends AbstractExtractor
 {
     public function __construct(private HttpClientInterface $httpClient, private readonly string $apiUrl)
     {
