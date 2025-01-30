@@ -2,12 +2,12 @@
 
 namespace Touloisirs\ETLWorkflow\Extractor;
 
-use GuzzleHttp\ClientInterface;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Touloisirs\ETLWorkflow\Context\ContextInterface;
 
 abstract class AbstractGuzzleExtractor extends AbstractExtractor
 {
-    public function __construct(private ClientInterface $guzzle, private readonly string $apiUrl)
+    public function __construct(private HttpClientInterface $httpClient, private readonly string $apiUrl)
     {
     }
 
@@ -18,7 +18,7 @@ abstract class AbstractGuzzleExtractor extends AbstractExtractor
 
     public function prepare(array $params = []): void
     {
-        $apiData = $this->guzzle->request('GET', $this->apiUrl)->getBody()->getContents();
+        $apiData = $this->httpClient->request('GET', $this->apiUrl)->getContent();
         $this->data = $this->prepareData($apiData);
     }
 
