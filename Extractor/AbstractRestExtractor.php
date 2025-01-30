@@ -24,7 +24,7 @@ abstract class AbstractRestExtractor extends AbstractExtractor
         $this->data = $this->prepareData($apiData);
     }
 
-    public function extract(?ContextInterface $context): mixed
+    public function extract(?ContextInterface $context = null): mixed
     {
         if (empty($this->data)) {
             return null;

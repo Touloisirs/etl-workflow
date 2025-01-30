@@ -13,7 +13,7 @@ abstract class AbstractExtractor implements ExtractorInterface
     /** @param array<mixed> $params */
     abstract public function prepare(array $params = []): void;
 
-    abstract public function extract(?ContextInterface $context): mixed;
+    abstract public function extract(?ContextInterface $context = null): mixed;
 
     public function purge(ContextInterface $context): bool
     {

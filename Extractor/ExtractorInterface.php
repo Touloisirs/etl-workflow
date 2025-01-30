@@ -11,7 +11,7 @@ interface ExtractorInterface
      */
     public function prepare(array $params = []): void;
 
-    public function extract(?ContextInterface $context): mixed;
+    public function extract(?ContextInterface $context = null): mixed;
 
     public function purge(ContextInterface $context): bool;
 }
