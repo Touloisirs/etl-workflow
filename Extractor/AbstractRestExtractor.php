@@ -20,7 +20,7 @@ abstract class AbstractRestExtractor extends AbstractExtractor
 
     public function prepare(array $params = []): void
     {
-        $apiData = $this->httpClient->request('GET', $this->apiUrl, ['query' => $this->apiParams])->getContent();
+        $apiData = $this->httpClient->request('GET', $this->apiUrl, ['query' => [...$this->apiParams, ...$params]])->getContent();
         $this->data = $this->prepareData($apiData);
     }
 
