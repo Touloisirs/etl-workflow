@@ -12,6 +12,6 @@ class TouloisirsETLWorkflowBundle extends AbstractBundle
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
         // load an XML, PHP or YAML file
-        $container->import('../config/services.yaml');
+        $container->import('./config/services.yaml');
     }
 }
