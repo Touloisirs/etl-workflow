@@ -9,7 +9,7 @@ abstract class AbstractRestExtractor extends AbstractExtractor
 {
     /** @param array<string> $apiParams */
     public function __construct(
-        private HttpClientInterface $httpClient,
+        protected HttpClientInterface $httpClient,
         private readonly string $apiUrl,
         private readonly array $apiParams = [],
     ) {
