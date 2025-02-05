@@ -29,6 +29,7 @@ class ETLCommand extends Command
 
         $this->runWorkflow($params, $output);
 
+        $symfonyStyle->newLine();
         $symfonyStyle->success('Import completed successfully');
 
         return Command::SUCCESS;
