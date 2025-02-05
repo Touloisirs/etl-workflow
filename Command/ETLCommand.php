@@ -7,6 +7,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Touloisirs\ETLWorkflow\Event\WorkflowProgressBarSubscriber;
 use Touloisirs\ETLWorkflow\Workflow\Workflow;
 
 class ETLCommand extends Command
@@ -26,7 +27,7 @@ class ETLCommand extends Command
 
         $params = [];
 
-        $this->runWorkflow($params);
+        $this->runWorkflow($params, $output);
 
         $symfonyStyle->success('Import completed successfully');
 
@@ -36,19 +37,19 @@ class ETLCommand extends Command
     /**
      * @param array<string, mixed> $params
      */
-    private function runWorkflow(array $params): void
+    private function runWorkflow(array $params, OutputInterface $output): void
     {
         $this->workflow->getExtractor()?->prepare($params);
         $this->workflow->getLoader()?->prepare($params);
+
+        // Todo: update this
         // if (method_exists($this->workflow->getContext(), 'prepare')) {
         //     $this->workflow->getContext()->prepare($params);
         // }
 
-        // // Display the progress bar only in dev
-        // if ('prod' != $this->appEnv) {
-        //     $this->eventDispatcher->addSubscriber(new WorkflowProgressBarSubscriber($output));
-        //     $this->workflow->setDispatcher($this->eventDispatcher);
-        // }
+        // Todo : handle progress bar
+        $this->eventDispatcher->addSubscriber(new WorkflowProgressBarSubscriber($output));
+        $this->workflow->setDispatcher($this->eventDispatcher);
 
         $this->workflow->process();
         if ($this->workflow->getContext()) {
