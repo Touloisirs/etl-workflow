@@ -14,8 +14,9 @@ class ETLCommand extends Command
     public function __construct(
         protected Workflow $workflow,
         protected EventDispatcherInterface $eventDispatcher,
+        string $name,
     ) {
-        parent::__construct();
+        parent::__construct($name);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
