@@ -7,11 +7,8 @@ use Touloisirs\ETLWorkflow\Context\ContextInterface;
 
 abstract class AbstractRestExtractor extends AbstractExtractor
 {
-    /** @param array<string> $apiParams */
     public function __construct(
         private HttpClientInterface $httpClient,
-        private readonly string $apiUrl,
-        private readonly array $apiParams = [],
     ) {
     }
 
@@ -20,7 +17,7 @@ abstract class AbstractRestExtractor extends AbstractExtractor
 
     public function prepare(array $params = []): void
     {
-        $apiData = $this->httpClient->request('GET', $this->apiUrl, ['query' => [...$this->apiParams, ...$params]])->getContent();
+        $apiData = $this->httpClient->request('GET', '', ['query' => $params])->getContent();
         $this->data = $this->prepareData($apiData);
     }
 
