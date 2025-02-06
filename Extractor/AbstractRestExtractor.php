@@ -2,27 +2,26 @@
 
 namespace Touloisirs\ETLWorkflow\Extractor;
 
-use GuzzleHttp\ClientInterface;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Touloisirs\ETLWorkflow\Context\ContextInterface;
 
-abstract class AbstractGuzzleExtractor extends AbstractExtractor
+abstract class AbstractRestExtractor extends AbstractExtractor
 {
-    public function __construct(private ClientInterface $guzzle, private readonly string $apiUrl)
-    {
+    public function __construct(
+        private HttpClientInterface $httpClient,
+    ) {
     }
 
-    /**
-     * @return array<mixed>
-     */
+    /** @return array<mixed> */
     abstract protected function prepareData(string $data): array;
 
     public function prepare(array $params = []): void
     {
-        $apiData = $this->guzzle->request('GET', $this->apiUrl)->getBody()->getContents();
+        $apiData = $this->httpClient->request('GET', '', ['query' => $params])->getContent();
         $this->data = $this->prepareData($apiData);
     }
 
-    public function extract(ContextInterface $context): mixed
+    public function extract(?ContextInterface $context = null): mixed
     {
         if (empty($this->data)) {
             return null;

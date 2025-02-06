@@ -4,20 +4,16 @@ namespace Touloisirs\ETLWorkflow\Extractor;
 
 use Touloisirs\ETLWorkflow\Context\ContextInterface;
 
-abstract class AbstractExtractor
+abstract class AbstractExtractor implements ExtractorInterface
 {
     protected bool $purge = false;
-    /**
-     * @var array<mixed>
-     */
+    /** @var array<mixed> */
     protected array $data = [];
 
-    /**
-     * @param array<mixed> $params
-     */
+    /** @param array<mixed> $params */
     abstract public function prepare(array $params = []): void;
 
-    abstract public function extract(ContextInterface $context): mixed;
+    abstract public function extract(?ContextInterface $context = null): mixed;
 
     public function purge(ContextInterface $context): bool
     {
