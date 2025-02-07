@@ -25,6 +25,7 @@ class ETLCommand extends Command
     {
         $symfonyStyle = new SymfonyStyle($input, $output);
         $symfonyStyle->title('Starting import');
+        $symfonyStyle->newLine(2);
 
         $params = [];
 
@@ -36,7 +37,6 @@ class ETLCommand extends Command
             return Command::FAILURE;
         }
 
-        $symfonyStyle->newLine(2);
         $symfonyStyle->success('Import completed successfully');
 
         return Command::SUCCESS;
