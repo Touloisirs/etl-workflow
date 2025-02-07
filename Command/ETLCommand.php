@@ -25,18 +25,19 @@ class ETLCommand extends Command
     {
         $symfonyStyle = new SymfonyStyle($input, $output);
         $symfonyStyle->title('Starting import');
-        $symfonyStyle->newLine(2);
 
         $params = [];
 
         try {
             $this->runWorkflow($params, $output);
         } catch (Throwable $e) {
+            $symfonyStyle->newLine(2);
             $symfonyStyle->error('Import failed: '.$e->getMessage());
 
             return Command::FAILURE;
         }
 
+        $symfonyStyle->newLine(2);
         $symfonyStyle->success('Import completed successfully');
 
         return Command::SUCCESS;
