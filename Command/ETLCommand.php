@@ -7,6 +7,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Throwable;
 use Touloisirs\ETLWorkflow\Event\WorkflowProgressBarSubscriber;
 use Touloisirs\ETLWorkflow\Workflow\Workflow;
 
@@ -27,7 +28,14 @@ class ETLCommand extends Command
 
         $params = [];
 
-        $this->runWorkflow($params, $output);
+        try {
+            $this->runWorkflow($params, $output);
+        } catch (Throwable $e) {
+            $symfonyStyle->newLine(2);
+            $symfonyStyle->error('Import failed: '.$e->getMessage());
+
+            return Command::FAILURE;
+        }
 
         $symfonyStyle->newLine(2);
         $symfonyStyle->success('Import completed successfully');
