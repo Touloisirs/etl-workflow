@@ -9,7 +9,9 @@ abstract class AbstractRestExtractor extends AbstractExtractor
 {
     public function __construct(
         private HttpClientInterface $httpClient,
+        private string $httpMethod = 'GET',
     ) {
+        $this->httpMethod = mb_strtoupper($httpMethod);
     }
 
     /** @return array<mixed> */
@@ -17,7 +19,12 @@ abstract class AbstractRestExtractor extends AbstractExtractor
 
     public function prepare(array $params = []): void
     {
-        $apiData = $this->httpClient->request('GET', '', ['query' => $params])->getContent();
+        $options = match ($this->httpMethod) {
+            'GET', 'DELETE' => ['query' => $params],
+            default => ['body' => $params],
+        };
+
+        $apiData = $this->httpClient->request($this->httpMethod, '', $options)->getContent();
         $this->data = $this->prepareData($apiData);
     }
 
