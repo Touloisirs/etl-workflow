@@ -2,6 +2,7 @@
 
 namespace Touloisirs\ETLWorkflow\Command;
 
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -16,6 +17,7 @@ class ETLCommand extends Command
     public function __construct(
         protected Workflow $workflow,
         protected EventDispatcherInterface $eventDispatcher,
+        protected LoggerInterface $logger,
         string $name,
     ) {
         parent::__construct($name);
@@ -32,7 +34,11 @@ class ETLCommand extends Command
             $this->runWorkflow($params, $output);
         } catch (Throwable $e) {
             $symfonyStyle->newLine(2);
-            $symfonyStyle->error('Import failed: '.$e->getMessage());
+            $errorMessage = 'Import failed: '.$e->getMessage();
+            $symfonyStyle->error($errorMessage);
+            $this->logger->error($errorMessage, [
+                'exception' => $e,
+            ]);
 
             return Command::FAILURE;
         }
